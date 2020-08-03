@@ -58,5 +58,27 @@ RSpec.describe "Assign Passenger To Flight Spec" do
         expect(page).to have_content(@flight3.number)
       end
     end
+
+    it "I can only add a passenger to a single flight once" do
+      visit passengers_path(@passenger1)
+
+      expect(FlightPassenger.count).to eq(2)
+
+      within "#passenger-flight-assignment-form" do
+        fill_in :flight_number, with: @flight3.number
+        click_button "Add Passenger to Flight"
+      end
+
+      expect(FlightPassenger.count).to eq(3)
+
+      within "#passenger-flight-assignment-form" do
+        fill_in :flight_number, with: @flight3.number
+        click_button "Add Passenger to Flight"
+      end
+
+      expect(FlightPassenger.count).to eq(3)
+
+      expect(page).to have_content("#{@passenger1.name} is already on Flight #{@flight3.number}.")
+    end
   end
 end
