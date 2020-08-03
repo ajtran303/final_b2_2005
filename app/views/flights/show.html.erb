@@ -18,3 +18,8 @@
     <%= tag.li passenger.name %>
   <% end %>
 </ul>
+
+<section class="passenger-ages">
+  <%= tag.p "Minors: #{@flight.count_minor_passengers}" %>
+  <%= tag.p "Adults: #{@flight.count_adult_passengers}" %>
+</section>
