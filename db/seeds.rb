@@ -6,27 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@frontier = Airline.create(name: "Frontier")
+frontier = Airline.create(name: "Frontier")
+southwest = Airline.create(name: "Southwest")
 
-@flight1 = Flight.create(number: "1727",
+flight1 = Flight.create(number: "1727",
               date: "08/03/20",
               time: "8:00 AM",
               departure_city: "Denver",
               arrival_city: "Reno",
-              airline_id: @frontier.id)
+              airline_id: frontier.id)
 
-@flight2 = Flight.create(number: "2465",
+flight2 = Flight.create(number: "2465",
               date: "08/03/20",
               time: "8:00 AM",
               departure_city: "Denver",
               arrival_city: "Reno",
-              airline_id: @frontier.id)
+              airline_id: frontier.id)
 
-@flight3 = Flight.create(number: "2255",
+flight3 = Flight.create(number: "2255",
               date: "08/03/20",
               time: "8:00 AM",
               departure_city: "Denver",
               arrival_city: "Reno",
-              airline_id: @frontier.id)
+              airline_id: southwest.id)
 
-@passenger1 = Passenger.create(name: "Jill", age: 21)
+joe = Passenger.create(name: "Joe", age: 7)
+jackie = Passenger.create(name: "Jackie", age: 17)
+jenny = Passenger.create(name: "Jackie", age: 18)
+jill = Passenger.create(name: "Jill", age: 21)
+jamie = Passenger.create(name: "Jamie", age: 28)
+
+flight1.passengers << [joe, jill]
+flight2.passengers << [jackie, jenny]
+flight3.passengers << [joe, jackie, jenny, jill, jamie]
