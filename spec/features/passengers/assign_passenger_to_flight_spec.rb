@@ -78,7 +78,9 @@ RSpec.describe "Assign Passenger To Flight Spec" do
 
       expect(FlightPassenger.count).to eq(3)
 
-      expect(page).to have_content("#{@passenger1.name} is already on Flight #{@flight3.number}.")
+      within ".flash-notice" do
+        expect(page).to have_content("#{@passenger1.name} is already on Flight #{@flight3.number}.")
+      end
     end
   end
 end
