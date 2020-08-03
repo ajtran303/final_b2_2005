@@ -1,0 +1,10 @@
+<section class="passenger-name">
+  <%= tag.h2 @passenger.name %>
+</section>
+
+<section class="passenger-flights">
+  <%= tag.h3 "Passenger Flights" %>
+  <% @passenger.flights.each do |flight| %>
+    <%= link_to flight.number, flights_path(flight) %>
+  <% end %>
+</section>
