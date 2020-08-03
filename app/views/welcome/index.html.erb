@@ -1,0 +1,13 @@
+<section class="all-flights">
+  <h1>All Flights</h1>
+  <%= @all_flights_and_passengers[:flights].each do |flight| %>
+    <p><%= link_to "Flight #{flight.number}", flights_path(flight) %></p>
+  <% end %>
+</section>
+
+<section class="all-passengers">
+  <h1>All Passengers</h1>
+  <%= @all_flights_and_passengers[:passengers].each do |passenger| %>
+    <p><%= link_to passenger.name, passengers_path(passenger) %></p>
+  <% end %>
+</section>
