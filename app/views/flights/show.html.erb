@@ -1,0 +1,20 @@
+<ul class="flight-information">
+  <%= tag.h2 "Flight Information" %>
+  <%= tag.li @flight.number %>
+  <%= tag.li @flight.date %>
+  <%= tag.li @flight.time %>
+  <%= tag.li @flight.departure_city %>
+  <%= tag.li @flight.arrival_city %>
+</ul>
+
+<ul class="airline-name">
+  <%= tag.h2 "Airline" %>
+  <%= tag.li @flight.airline.name %>
+</ul>
+
+<ul class="passenger-names">
+  <%= tag.h2 "Passengers" %>
+  <% @flight.passengers.each do |passenger| %>
+    <%= tag.li passenger.name %>
+  <% end %>
+</ul>
