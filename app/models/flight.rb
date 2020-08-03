@@ -6,4 +6,12 @@ class Flight < ApplicationRecord
   def self.get_flight_id_from_flight_number(flight_number)
     self.where(number: flight_number).distinct.first.id
   end
+
+  def count_minor_passengers
+    passengers.where("age < ?", 18).count
+  end
+
+  def count_adult_passengers
+    passengers.where("age >= ?", 18).count
+  end
 end
